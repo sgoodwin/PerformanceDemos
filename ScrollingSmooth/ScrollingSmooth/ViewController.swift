@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UITableViewController {
     
     var data = [String]()
+    let namesQueue = DispatchQueue(label: "demo.demo.ScrollingSmooth.names", qos: .background)
+    let semaphore = DispatchSemaphore(value: 1)
     
     func randomWord() -> String {
         let alphabet =  "abcdefghijklmnopqrstuvwxyz"
@@ -27,22 +29,33 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for _ in 0..<10_000_000 {
-            data.append(randomWord())
+        namesQueue.async { [weak self] in
+            guard let self = self else { return }
+            for _ in 0..<10_000_000 {
+                self.semaphore.wait()
+                self.data.append(self.randomWord())
+                self.semaphore.signal()
+            }
         }
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        semaphore.wait()
+        let count = data.count
+        semaphore.signal()
+        return count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+        self.semaphore.wait()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = data[indexPath.row]
-        
+        self.semaphore.signal()
         return cell
     }
-
+    
 }
 
