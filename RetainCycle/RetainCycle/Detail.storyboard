@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LF3-mS-pXc">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Detail View Controller-->
+        <scene sceneID="CfX-oe-kWe">
+            <objects>
+                <viewController id="LF3-mS-pXc" customClass="DetailViewController" customModule="RetainCycle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rw0-DI-G4T">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DETAIL!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSI-nJ-PEZ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LgN-cO-flw">
+                                <rect key="frame" x="15" y="20" width="48" height="30"/>
+                                <state key="normal" title="&lt; Back"/>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="LF3-mS-pXc" eventType="touchUpInside" id="86h-Y4-S55"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KaQ-iD-qGC" firstAttribute="trailing" secondItem="uSI-nJ-PEZ" secondAttribute="trailing" id="2bD-2y-The"/>
+                            <constraint firstItem="KaQ-iD-qGC" firstAttribute="bottom" secondItem="uSI-nJ-PEZ" secondAttribute="bottom" id="7oV-m4-SNI"/>
+                            <constraint firstItem="LgN-cO-flw" firstAttribute="leading" secondItem="KaQ-iD-qGC" secondAttribute="leading" constant="15" id="WAK-EZ-75Q"/>
+                            <constraint firstItem="uSI-nJ-PEZ" firstAttribute="top" secondItem="KaQ-iD-qGC" secondAttribute="top" id="XjJ-C1-n8D"/>
+                            <constraint firstItem="LgN-cO-flw" firstAttribute="top" secondItem="KaQ-iD-qGC" secondAttribute="top" id="YU0-WH-cLO"/>
+                            <constraint firstItem="uSI-nJ-PEZ" firstAttribute="leading" secondItem="KaQ-iD-qGC" secondAttribute="leading" id="iM0-Oi-pRe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KaQ-iD-qGC"/>
+                    </view>
+                    <connections>
+                        <outlet property="detailLabel" destination="uSI-nJ-PEZ" id="Ygj-Wk-tEV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9af-EC-9pS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="687" y="-656"/>
+        </scene>
+    </scenes>
+</document>
